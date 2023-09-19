@@ -35,11 +35,22 @@ async function deletePost(id: number) {
 
 }
 
+async function updatePost(id: number, post: CreatePost) {
+  return await prisma.post.update({
+    data: post,
+    where:{
+      id
+    }
+  });
+
+}
+
 const postRepository = {
   getPost,
   getPosts,
   createPost,
-  deletePost
+  deletePost,
+  updatePost
 }
 
 export default postRepository;
